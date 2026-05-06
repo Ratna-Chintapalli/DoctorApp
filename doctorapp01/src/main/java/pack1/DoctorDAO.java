@@ -16,9 +16,11 @@ public class DoctorDAO {
 	
 	public int insert(Doctor doctor) {
 		String sql = "insert into doctor65 (name,email,specialist,city,country) values (?,?,?,?,?)";
-		return jdbcTemplate.update(sql, doctor.getName(), 
+		return jdbcTemplate.update(sql,
+				doctor.getName(), 
 				doctor.getEmail(), 
-				doctor.getSpecialist(), doctor.getCity(),
+				doctor.getSpecialist(), 
+				doctor.getCity(),
 				doctor.getCountry());
 	}
 	

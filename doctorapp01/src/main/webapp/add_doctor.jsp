@@ -1,3 +1,4 @@
+<%@ page isELIgnored="false" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -20,6 +21,7 @@
         <div class="card-body">
 
             <h4 class="text-center fw-bold">Add Doctor</h4>
+            
 
             <form:form modelAttribute="doctor" action="save" method="post">
 
@@ -60,4 +62,4 @@
 </div>
 
 </body>
-</html>
+</html> 

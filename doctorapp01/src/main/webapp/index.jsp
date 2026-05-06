@@ -1,58 +1,58 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false"%>
 
-<!DOCTYPE html>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
+<%@ taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
 <html>
 <head>
-    <title>Doctor Portal</title>
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- CSS only -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
+<title>Spring MVC</title>
 </head>
-
 <body style="background-color: #b1e6bc">
+	<div class="container mt-5">
+		<h1 align="center" style="font-weight: bold;">Doctor Portal</h1>
+		<a href="doctorform" class="btn btn-info" style="font-weight: bold;">Add
+			New Doctor</a>
+		<table class="table mt-5 table-info ">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Name</th>
+					<th scope="col">Email</th>
+					<th scope="col">Specialist</th>
+					<th scope="col">City</th>
+					<th scope="col">Country</th>
+					<th scope="col">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="doc" items="${list}">
+					<tr>
+						<th scope="row"><c:out value="${doc.id}" /></th>
+						<td><c:out value="${doc.name}" /></td>
+						<td><c:out value="${doc.email}" /></td>
+						<td><c:out value="${doc.specialist}" /></td>
+						<td><c:out value="${doc.city}" /></td>
+						<td><c:out value="${doc.country}" /></td>
 
-<div class="container mt-5">
-
-    <h1 class="text-center fw-bold">Doctor Portal</h1>
-
-    <a href="doctorform" class="btn btn-info fw-bold mt-3">
-        Add New Doctor
-    </a>
-
-    <table class="table table-info table-bordered mt-4">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Specialist</th>
-                <th>City</th>
-                <th>Country</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            <c:forEach var="doc" items="${list}">
-                <tr>
-                    <td>${doc.id}</td>
-                    <td>${doc.name}</td>
-                    <td>${doc.email}</td>
-                    <td>${doc.specialist}</td>
-                    <td>${doc.city}</td>
-                    <td>${doc.country}</td>
-                    <td>
-                        <a href="editdoctorform/${doc.id}" class="btn btn-warning btn-sm">Edit</a>
-                        <a href="deletedoctor/${doc.id}" class="btn btn-danger btn-sm">Delete</a>
-                    </td>
-                </tr>
-            </c:forEach>
-        </tbody>
-
-    </table>
-
-</div>
-
+						<td><a
+							href="${pageContext.request.contextPath}/doctor/edit/${doc.id}"
+							class="btn btn-warning">Edit</a> <a
+							href="${pageContext.request.contextPath}/doctor/delete/${doc.id}"
+							class="btn btn-danger">Delete</a></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
 </body>
 </html>
